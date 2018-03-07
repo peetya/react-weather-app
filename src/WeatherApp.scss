@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Lobster");
+@import "~bootstrap/scss/bootstrap";
+@import "~weather-icons/css/weather-icons.css";
+@import "./styles/global";
+
+* {
+  font-family: $body-font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font-family;
+}
+
+.app-title {
+  color: $primary-font-color;
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(to bottom, $primary-color, $secondary-color);
+  min-height: 100vh;
+  padding: 30px 15px;
+}
+
+.page {
+  float: left;
+  position: relative;
+  min-height: 100vh;
+
+  .page-header, .page-footer {
+    text-align: center;
+  }
+
+  .page-footer {
+    .btn-weatherapp {
+
+    }
+  }
+}
+
+.page-container {
+  border-radius: 2px;
+  color: $primary-color;
+  background-color: #ffffff;
+  //background: linear-gradient(to bottom, $secondary-color, darken($secondary-color, 20%));
+  padding: 15px;
+}

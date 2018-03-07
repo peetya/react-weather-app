@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import apiReducer from './api.reducer';
-import settingsReducer from './settings.reducer';
+import api from './api.reducer';
+import settings from './settings.reducer';
+import geolocation from './geolocation.reducer';
 
 const rootReducer = combineReducers({
-    apiReducer,
-    settingsReducer,
+    api,
+    settings,
+    geolocation,
 });
 
 export default rootReducer;
