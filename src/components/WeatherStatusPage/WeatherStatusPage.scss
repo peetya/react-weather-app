@@ -1,0 +1,85 @@
+@import '../../styles/global';
+
+.page.status {
+  .page-body {
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+
+    &.rain {
+      background-image: url('../../images/rain.jpg');
+    }
+
+    &.clouds {
+      background-image: url('../../images/cloud.jpg');
+    }
+
+    &.clear {
+      background-image: url('../../images/clear.jpg');
+    }
+
+    &.drizzle {
+      background-image: url('../../images/drizzle.jpg');
+    }
+
+    &.thunderstorm {
+      background-image: url('../../images/thunderstorm.jpg');
+    }
+  }
+
+  .weather-status-wrapper {
+    height: 400px;
+    position: relative;
+    background: radial-gradient(transparent, rgba(0, 0, 0, 0.4));
+
+    .positive-text,
+    .negative-text,
+    .icon,
+    .name,
+    .temperature,
+    .humidity,
+    .city {
+      color: $primary-font-color;
+      position: absolute;
+      text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
+    }
+
+    .positive-text, .negative-text {
+      font-size: 16pt;
+      top: 15px;
+      right: 15px;
+      margin-left: 15px;
+    }
+
+    .icon {
+      font-size: 72pt;
+      width: 100%;
+      text-align: center;
+      top: 20%;
+    }
+
+    .name {
+      font-size: 35pt;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+    }
+
+    .humidity {
+      left: 15px;
+      bottom: 100px;
+    }
+
+    .temperature {
+      left: 15px;
+      bottom: 60px;
+      font-size: 30px;
+    }
+
+    .city {
+      left: 15px;
+      bottom: 15px;
+      font-size: 40px;
+    }
+  }
+}

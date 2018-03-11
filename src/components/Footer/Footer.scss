@@ -1,0 +1,13 @@
+@import "../../styles/global";
+
+.mwm-footer {
+  color: $primary-color;
+
+  a {
+    color: $primary-color;
+
+    &:hover {
+      color: $quaternary-color;
+    }
+  }
+}

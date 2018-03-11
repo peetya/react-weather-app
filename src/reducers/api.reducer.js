@@ -1,7 +1,10 @@
 import { SAVE_WEATHER_INFO } from '../actions/api.action';
 
 const defaultState = {
-    apiResponse: {},
+    humidity: null,
+    temperature: null,
+    cityName: null,
+    weatherConditionCode: null,
 };
 
 const apiReducer = (state = defaultState, action) => {
@@ -9,7 +12,10 @@ const apiReducer = (state = defaultState, action) => {
         case SAVE_WEATHER_INFO:
             return {
                 ...state,
-                apiResponse: action.apiResponse,
+                humidity: action.humidity,
+                temperature: action.temperature,
+                cityName: action.cityName,
+                weatherConditionCode: action.weatherConditionCode,
             };
 
         default:

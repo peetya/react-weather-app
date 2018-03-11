@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Lobster");
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/weather-icons/css/weather-icons.css";
+@import "../styles/global";
+
+html {
+  min-height: 100%;
+}
+
+.carousel {
+  top: -76px;
+}
+
+* {
+  font-family: $body-font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font-family;
+}
+
+body {
+  background: linear-gradient(to bottom, $primary-color, $secondary-color);
+  height: 100%;
+}
+
+.page {
+  float: left;
+  position: relative;
+
+  .page-header, .page-footer {
+    text-align: center;
+  }
+
+  .page-header, .page-footer, .page-body {
+    padding: 15px;
+  }
+
+  .page-header {
+    border-radius: 5px;
+    background-color: $tertiary-color;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.page-container {
+  border-radius: 5px;
+  color: $primary-color;
+  background-color: #ffffff;
+}
+
+.btn-mwm {
+  background: linear-gradient(to bottom right, $quaternary-color, darken($quaternary-color, 10%));
+  color: $primary-font-color;
+  transition: .5s;
+
+  &:hover {
+    background: linear-gradient(to bottom right, $quaternary-color, darken($quaternary-color, 20%));
+  }
+}
+
+.btn-mwm-link {
+  background-color: transparent;
+  color: $secondary-font-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

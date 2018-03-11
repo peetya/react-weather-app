@@ -1,17 +1,34 @@
-import { UPDATE_SETTINGS } from '../actions/settings.action';
+import {SAVE_CURRENT_DETAILS, SAVE_SETTINGS} from '../actions/settings.action';
 
 const defaultState = {
     weatherConditionCode: 800,
     temperature: 35,
+    humidity: 50,
+    icon: '',
+    name: '',
+    className: '',
+    positiveText: '',
+    negativeText: '',
 };
 
-const apiReducer = (state = defaultState, action) => {
+const settingsReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case UPDATE_SETTINGS:
+        case SAVE_SETTINGS:
             return {
                 ...state,
                 weatherConditionCode: action.weatherConditionCode,
                 temperature: action.temperature,
+                humidity: action.humidity,
+            };
+
+        case SAVE_CURRENT_DETAILS:
+            return {
+                ...state,
+                icon: action.icon,
+                name: action.name,
+                className: action.className,
+                positiveText: action.positiveText,
+                negativeText: action.negativeText,
             };
 
         default:
@@ -19,4 +36,4 @@ const apiReducer = (state = defaultState, action) => {
     }
 };
 
-export default apiReducer;
+export default settingsReducer;

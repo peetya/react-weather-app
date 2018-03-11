@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { saveCoordinates } from "../actions/geolocation.action";
-import { saveWeatherInfo } from "../actions/api.action";
-import { getCurrentWeatherInfo } from "../services/owm.service";
-import {
-    isGeolocationSupported,
-    getUserCoordinates,
-} from '../services/geolocation.service';
+import { saveCoordinates } from "../../actions/geolocation.action";
+import { saveWeatherInfo } from "../../actions/api.action";
+import { saveCurrentDetails } from "../../actions/settings.action";
+import { getCurrentWeatherInfo, getWeatherStatusList } from "../../services/owm.service";
+import { isGeolocationSupported, getUserCoordinates } from '../../services/geolocation.service';
 
 class WelcomePage extends React.Component {
     constructor(props) {
@@ -31,7 +29,9 @@ class WelcomePage extends React.Component {
     }
 
     onSwipeNext() {
-        this.props.onSwipeNext();
+        if (this.state.isGeolocationSupported) {
+            this.props.onSwipeNext();
+        }
     }
 
     onGeolocationButtonClick() {
@@ -50,7 +50,10 @@ class WelcomePage extends React.Component {
 
                 getCurrentWeatherInfo(result.coords.latitude, result.coords.longitude).then(
                     result => {
+                        const weatherConditionDetails = getWeatherStatusList().filter(wc => String(result.weather[0].id).startsWith(wc.codeStartsWith))[0];
+
                         this.props.dispatch(saveWeatherInfo(result));
+                        this.props.dispatch(saveCurrentDetails(weatherConditionDetails.icon, weatherConditionDetails.name, weatherConditionDetails.name.toLowerCase(), weatherConditionDetails.positiveText, weatherConditionDetails.negativeText));
                     }
                 );
             },
@@ -59,9 +62,9 @@ class WelcomePage extends React.Component {
                     isGeolocationLoading: false,
                     isGeolocationHasError: true,
                     geolocationErrorMessage: err.message,
-                })
-            },
-        );
+                });
+            }
+        )
     }
 
     render() {
@@ -85,9 +88,9 @@ class WelcomePage extends React.Component {
                                     </p>
                                 </div>
                                 <div className="page-footer">
-                                    {(this.state.isGeolocationLoading && <p>loading...</p>)}
-                                    {(this.state.isGeolocationSupported && !this.state.isGeolocationHasError && !this.state.isGeolocationEnabled && !this.state.isGeolocationLoading && <button className="btn btn-default" onClick={() => this.onGeolocationButtonClick()}>Enable Geolocation</button>)}
-                                    {(this.state.isGeolocationSupported && !this.state.isGeolocationHasError && this.state.isGeolocationEnabled && !this.state.isGeolocationLoading && <button className="btn btn-default" onClick={() => this.onSwipeNext()}>Continue</button>)}
+                                    {(this.state.isGeolocationLoading && <p>Loading...</p>)}
+                                    {(this.state.isGeolocationSupported && !this.state.isGeolocationHasError && !this.state.isGeolocationEnabled && !this.state.isGeolocationLoading && <button className="btn btn-mwm" onClick={() => this.onGeolocationButtonClick()}>Enable Geolocation</button>)}
+                                    {(this.state.isGeolocationSupported && !this.state.isGeolocationHasError && this.state.isGeolocationEnabled && !this.state.isGeolocationLoading && <button className="btn btn-mwm" onClick={() => this.onSwipeNext()}>Continue</button>)}
                                     {(this.state.geolocationErrorMessage !== null && <p>{this.state.geolocationErrorMessage}</p>)}
                                 </div>
                             </div>
@@ -101,6 +104,7 @@ class WelcomePage extends React.Component {
 
 WelcomePage.propTypes = {
     onSwipeNext: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(WelcomePage);
