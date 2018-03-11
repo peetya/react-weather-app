@@ -37,7 +37,7 @@ class SettingsPage extends React.Component {
 
     onTemperatureChange(e) {
         this.setState({
-            temperature: e.target.value,
+            temperature: parseInt(e.target.value),
         });
 
         this.onSaveSettings();
@@ -45,7 +45,7 @@ class SettingsPage extends React.Component {
 
     onHumidityChange(e) {
         this.setState({
-            humidity: e.target.value,
+            humidity: parseInt(e.target.value),
         });
 
         this.onSaveSettings();
@@ -63,7 +63,7 @@ class SettingsPage extends React.Component {
                         <div className="col-lg-6 offset-lg-3">
                             <div className="page-container shadow">
                                 <div className="page-header">
-                                    <h1>Settings</h1>
+                                    <h1>What is your ideal weather?</h1>
                                 </div>
                                 <div className="page-body">
                                     <form>

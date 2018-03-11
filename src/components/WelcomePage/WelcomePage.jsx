@@ -79,12 +79,10 @@ class WelcomePage extends React.Component {
                                 </div>
                                 <div className="page-body">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at gravida ex. Proin non lectus vel purus malesuada efficitur.
-                                        In egestas id sapien in iaculis. Vivamus varius mi ante, elementum bibendum odio bibendum et.
-                                        Nulla auctor tellus ut bibendum tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Nunc sed diam lorem. Suspendisse aliquam convallis nisl id luctus. Duis vitae mattis mi.
-                                        Sed porttitor risus quis tellus vehicula, in vehicula felis sollicitudin.
-                                        Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                                        Would you like to know if the weather suits your desire?
+                                    </p>
+                                    <p>
+                                        Just enable your current location, let us know which weather is ideal for you, and we will inform you if it is a day for doing great things or it is better to stay at home and skip the day!
                                     </p>
                                 </div>
                                 <div className="page-footer">
